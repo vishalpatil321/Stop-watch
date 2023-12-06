@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .timer-background{
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 550px;
+            background-color: rgb(13, 13, 13);
+            align-items: center;
+            display: flex;
+            justify-content: space-evenly;
+        }
+        h1{
+            color: red;
+            margin-left: 120px;
+        }
+        .count{
+            font-size: 55px;
+            color: white;
+        }
+        .timer{
+            width: 15%;
+    height: 32%;
+    border-radius: 85px;
+    text-align: center;
+    border: none;
+        }
+        .btn{
+            width: 100px;
+            height: 30px;
+            margin-top: 30px;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    
+        }
+        #green{
+
+            background-color: green;
+            border: 2px solid rgb(77, 77, 77);
+        }
+        #red{
+            background-color: red;
+            border: 2px solid rgb(77, 77, 77);
+        }
+        #yellow{
+            background-color: rgb(194, 194, 43);
+            border: 2px solid rgb(77, 77, 77);
+        }
+
+        @media only screen and (min-width: 180px) and (max-width: 567px) {
+             .timer-background{
+                display: inline-block;
+                height: 100vh;
+
+              
+
+             } 
+             .timer{
+                width: 60%;
+                height: 38vh;
+                border-radius: 50%;
+                margin-left: 80px;
+                
+             }
+             .btn{
+                margin-top: 80px;
+             }
+        }
+
+
+
+    </style>
+    <div class="timer-background">
+        <h1><u>STOP WATCH</u></h1>
+        <div class="timer">
+        <p class="count"></p>
+        <button  class="btn" id="green" onclick="start();">START</button>
+        <button  class="btn" id="red" onclick="stop(); ">STOP</button>
+        
+        <button  class="btn" id="yellow" onclick="reset();">RESET</button>
+        </div>
+    </div>
+
+    <script>
+
+     let getcount = document.querySelector('.count');
+     let getstart = document.querySelector('.start');
+     let getstop = document.querySelector('.stop');
+        
+        let s = 0;
+        let m = 0;
+        let h = 0; 
+        let time = false;
+
+        function start(){
+           time = true;
+           stopwatch(); 
+        }
+
+        function stop(){
+           time = false; 
+        }
+
+        function reset(){
+            time = false;
+
+             s = 0;
+             m = 0;
+             h = 0; 
+
+            getcount.innerText = `${h}:${m}:${s}`;
+        }
+     
+        function stopwatch(){
+             if(time === true){
+                s++;
+                if(s === 59){
+                    s = 0;
+                    m++;
+
+                }
+                else if(m === 59){
+                    m = 0;
+                    h++;
+                }
+             }
+             getcount.innerText = `${h}:${m}:${s}`;
+            
+        }
+    
+        setInterval(stopwatch , 1000);
+      
+      
+       
+
+    
+
+        
+        
+
+      
+    </script>
+</body>
+</html>
